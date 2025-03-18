@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatima Qayyum - Software Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CV Design - Variables */
+        :root {
+            --primary-color: #7E57C2;
+            --primary-light: #B39DDB;
+            --primary-dark: #5E35B1;
+            --accent-color: #FF9800;
+            --text-dark: #212121;
+            --text-medium: #424242;
+            --text-light: #757575;
+            --bg-light: #F5F5F5;
+            --bg-white: #FFFFFF;
+            --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 6px 16px rgba(0, 0, 0, 0.12);
+            --border-radius: 10px;
+            --spacing-xs: 5px;
+            --spacing-sm: 10px;
+            --spacing-md: 20px;
+            --spacing-lg: 30px;
+            --spacing-xl: 40px;
+        }
+
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Layout */
+        .cv-container {
+            display: flex;
+            max-width: 1100px;
+            margin: 40px auto;
+            box-shadow: var(--shadow-medium);
+            border-radius: var(--border-radius);
+            background-color: var(--bg-white);
+            overflow: hidden;
+        }
+
+        /* Sidebar - Left Column */
+        .sidebar {
+            width: 320px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: var(--spacing-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Main Content - Right Column */
+        .main-content {
+            flex: 1;
+            padding: var(--spacing-xl);
+            background-color: var(--bg-white);
+        }
+
+        /* Profile Section */
+        .profile {
+            text-align: center;
+            padding-bottom: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-circle {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .profile h1 {
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 700;
+        }
+
+        .profile h2 {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-xs) 0;
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-sm);
+            flex-shrink: 0;
+        }
+
+        /* Interest Areas */
+        .sidebar-section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .sidebar-title i {
+            margin-right: var(--spacing-xs);
+        }
+
+        .sidebar-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin-left: var(--spacing-sm);
+        }
+
+        .interests-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .interest {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .interest:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .interest i {
+            margin-right: 6px;
+            font-size: 0.75rem;
+        }
+
+        /* Main Content Sections */
+        .section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .section-title i {
+            margin-right: var(--spacing-sm);
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary-light), rgba(179, 157, 219, 0.2));
+            margin-left: var(--spacing-sm);
+            border-radius: 2px;
+        }
+
+        /* Summary */
+        .summary {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .summary p {
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        .availability-status {
+            position: absolute;
+            top: -10px;
+            right: var(--spacing-md);
+            background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Education */
+        .timeline {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-light);
+            border-radius: 1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: var(--spacing-xl);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 10px;
+            width: 14px;
+            height: 14px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(126, 87, 194, 0.2);
+        }
+
+        .timeline-content {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--primary-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xs);
+            flex-wrap: wrap;
+        }
+
+        .degree {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .period {
+            color: white;
+            background-color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .university {
+            color: var(--text-medium);
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .timeline-details {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .skill-item {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--primary-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .skill-level {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: rgba(126, 87, 194, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+        }
+
+        /* Core Strengths */
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .strength-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .strength-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+            z-index: -1;
+        }
+
+        .strength-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .strength-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(126, 87, 194, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-sm);
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        .strength-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-xs);
+            font-size: 1rem;
+        }
+
+        .strength-desc {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .certification-card {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--primary-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .cert-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xs);
+            align-items: flex-start;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .cert-issuer {
+            color: var(--text-medium);
+            font-style: italic;
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.9rem;
+        }
+
+        .cert-desc {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Decorative Elements */
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 0;
+        }
+
+        .deco-circle-1 {
+            width: 200px;
+            height: 200px;
+            top: -50px;
+            right: -50px;
+        }
+
+        .deco-circle-2 {
+            width: 150px;
+            height: 150px;
+            bottom: 50px;
+            left: -50px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1000px) {
+            .cv-container {
+                flex-direction: column;
+                margin: 20px;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: var(--spacing-md);
+            }
+
+            .main-content {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+
+            .profile-circle {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid,
+            .strengths-grid,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline-header {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main CV Container with Schema Markup -->
+    <div class="cv-container" itemscope itemtype="https://schema.org/Person">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <!-- Decorative Elements -->
+            <div class="deco-circle deco-circle-1"></div>
+            <div class="deco-circle deco-circle-2"></div>
+            
+            <!-- Profile Section -->
+            <div class="profile">
+                <div class="profile-circle">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1 itemprop="name">Fatima Qayyum</h1>
+                <h2 itemprop="jobTitle">Aspiring Software Developer & Tech Enthusiast</h2>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span itemprop="email">fatimaawan4203@gmail.com</span>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <span itemprop="telephone">+92 3010069900</span>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                        <span itemprop="addressLocality">Sargodha</span>,
+                        <span itemprop="addressRegion">Punjab</span>,
+                        <span itemprop="addressCountry">Pakistan</span>
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Areas of Interest -->
+            <div class="sidebar-section" itemprop="seeks" itemscope itemtype="https://schema.org/Demand">
+                <h3 class="sidebar-title">
+                    <i class="fas fa-heart"></i>
+                    Areas of Interest
+                </h3>
+                <div class="interests-container">
+                    <div class="interest" itemprop="description">
+                        <i class="fas fa-globe"></i>
+                        Web Development
+                    </div>
+                    <div class="interest" itemprop="description">
+                        <i class="fas fa-mobile-alt"></i>
+                        Mobile App Development
+                    </div>
+                    <div class="interest" itemprop="description">
+                        <i class="fas fa-brain"></i>
+                        Artificial Intelligence
+                    </div>
+                    <div class="interest" itemprop="description">
+                        <i class="fas fa-shield-alt"></i>
+                        Cybersecurity
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Professional Summary -->
+            <div class="summary">
+                <div class="availability-status">
+                    <span class="status-dot"></span>
+                    <span itemprop="seeks" itemscope itemtype="https://schema.org/Demand">
+                        <span itemprop="description">Seeking Opportunities</span>
+                    </span>
+                </div>
+                <p itemprop="description">Motivated and meticulous Computer Science student possessing a solid academic foundation and a keen interest in creating innovative solutions. Presently working towards a Bachelor's degree in Computer Science at the University of Sargodha. Skilled in various programming languages such as C++, Python, HTML, CSS, and Kotlin. Enthusiastic about utilizing my technical abilities and understanding in a professional setting to contribute to impactful projects and further develop as a developer.</p>
+            </div>
+            
+            <!-- Education Section -->
+            <section class="section">
+                <h3 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Education
+                </h3>
+                
+                <div class="timeline">
+                    <div class="timeline-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="degree" itemprop="degree">Bachelor of Science in Computer Science</span>
+                                <span class="period">Current (8th Semester)</span>
+                            </div>
+                            <div class="university" itemprop="name">University of Sargodha</div>
+                            <div class="timeline-details" itemprop="description">CGPA: 3.32/4.00</div>
+                            <meta itemprop="alumniOf" content="University of Sargodha">
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="degree" itemprop="degree">Intermediate in Pre-Engineering</span>
+                                <span class="period">Completed</span>
+                            </div>
+                            <div class="university" itemprop="name">Board of Intermediate and Secondary Education</div>
+                            <div class="timeline-details" itemprop="description">Marks: 970/1100 (88.18%)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="degree" itemprop="degree">Matriculation</span>
+                                <span class="period">Completed</span>
+                            </div>
+                            <div class="university" itemprop="name">Board of Intermediate and Secondary Education</div>
+                            <div class="timeline-details" itemprop="description">Marks: 1011/1100 (91.91%)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Technical Skills Section -->
+            <section class="section">
+                <h3 class="section-title">
+                    <i class="fas fa-code"></i>
+                    Technical Skills
+                </h3>
+                
+                <div class="skills-grid">
+                    <div class="skill-item" itemprop="hasSkill" itemscope itemtype="https://schema.org/DefinedTerm">
+                        <div class="skill-header">
+                            <span class="skill-name" itemprop="name">HTML</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item" itemprop="hasSkill" itemscope itemtype="https://schema.org/DefinedTerm">
+                        <div class="skill-header">
+                            <span class="skill-name" itemprop="name">CSS</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item" itemprop="hasSkill" itemscope itemtype="https://schema.org/DefinedTerm">
+                        <div class="skill-header">
+                            <span class="skill-name" itemprop="name">C++</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item" itemprop="hasSkill" itemscope itemtype="https://schema.org/DefinedTerm">
+                        <div class="skill-header">
+                            <span class="skill-name" itemprop="name">Python</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item" itemprop="hasSkill" itemscope itemtype="https://schema.org/DefinedTerm">
+                        <div class="skill-header">
+                            <span class="skill-name" itemprop="name">Kotlin</span>
+                            <span class="skill-level">Basic</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Core Strengths Section -->
+            <section class="section">
+                <h3 class="section-title">
+                    <i class="fas fa-star"></i>
+                    Core Strengths
+                </h3>
+                
+                <div class="strengths-grid">
+                    <div class="strength-card" itemprop="knowsAbout">
+                        <div class="strength-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="strength-title">Creative Thinking</div>
+                        <div class="strength-desc">Bringing innovative solutions to complex challenges</div>
+                    </div>
+                    
+                    <div class="strength-card" itemprop="knowsAbout">
+                        <div class="strength-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="strength-title">Programming</div>
+                        <div class="strength-desc">Proficient in multiple programming languages</div>
+                    </div>
+                    
+                    <div class="strength-card" itemprop="knowsAbout">
+                        <div class="strength-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="strength-title">Technical Research</div>
+                        <div class="strength-desc">Exploring new technologies and implementing best practices</div>
+                    </div>
+                    
+                    <div class="strength-card" itemprop="knowsAbout">
+                        <div class="strength-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="strength-title">Time Management</div>
+                        <div class="strength-desc">Efficiently balances multiple tasks and deadlines</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Certifications Section -->
+            <section class="section">
+                <h3 class="section-title">
+                    <i class="fas fa-certificate"></i>
+                    Certifications
+                </h3>
+                
+                <div class="certifications-grid">
+                    <div class="certification-card" itemprop="hasCredential" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+                        <div class="cert-header">
+                            <span class="cert-name" itemprop="credentialCategory">Meta Front-End Developer</span>
+                        </div>
+                        <div class="cert-issuer" itemprop="recognizedBy">Coursera</div>
+                        <div class="cert-desc" itemprop="description">Comprehensive course covering HTML, CSS, and basic JavaScript</div>
+                    </div>
+                    
+                    <div class="certification-card" itemprop="hasCredential" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+                        <div class="cert-header">
+                            <span class="cert-name" itemprop="credentialCategory">Meta Android Developer</span>
+                        </div>
+                        <div class="cert-issuer" itemprop="recognizedBy">Coursera</div>
+                        <div class="cert-desc" itemprop="description">Building Android Applications</div>
+                    </div>
+                    
+                    <div class="certification-card" itemprop="hasCredential" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+                        <div class="cert-header">
+                            <span class="cert-name" itemprop="credentialCategory">Google Cybersecurity Professional Certificate</span>
+                        </div>
+                        <div class="cert-issuer" itemprop="recognizedBy">Coursera</div>
+                        <div class="cert-desc" itemprop="description">Foundations of Cybersecurity</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Footer -->
+            <footer class="footer">
+                <p>© <span itemprop="birthDate">2025</span> <span itemprop="name">Fatima Qayyum</span> - All Rights Reserved</p>
+                <meta itemprop="gender" content="Female">
+                
